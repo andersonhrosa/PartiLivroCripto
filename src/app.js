@@ -42,15 +42,17 @@ App = {
     loadAccounts: async () => {
         // connect to all the accounts, we want index 0 since, its the first account
         // the account we are connected to
-        App.account = await ethereum.request({ method: 'eth_accounts' });
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        App.account = accounts[0];
         console.log(App.account);
+
     },
 
     loadContract: async () => {
         // create a JS version of the contracts
         const todoList = await $.getJSON('TodoList.json')
         App.contracts.TodoList = TruffleContract(todoList)
-        App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://172.25.176.1:7545"));
+        App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://172.27.32.1:7545"));
         // console.log(todoList);
 
         // Hydrate the smart contract with values from the blockchain
