@@ -52,7 +52,7 @@ App = {
         // create a JS version of the contracts
         const todoList = await $.getJSON('TodoList.json')
         App.contracts.TodoList = TruffleContract(todoList)
-        App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://172.27.32.1:7545"));
+        App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://172.24.160.1:7545"));
         // console.log(todoList);
 
         // Hydrate the smart contract with values from the blockchain
