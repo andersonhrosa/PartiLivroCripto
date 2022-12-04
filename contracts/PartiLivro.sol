@@ -24,7 +24,7 @@ contract PartiLivro {
     );
 
     constructor() public {
-        createBook("Check out partilivro.azurewebsites.net");
+        createBook("Livro 1");
     }
 
     function createBook(string memory _content) public {
