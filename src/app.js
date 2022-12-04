@@ -89,10 +89,18 @@ App = {
             const book_id = book[0].toNumber();
             const book_content = book[1];
             const book_completed = book[2];
+            const book_author = book[3];
+            const book_publishing = book[4];
+            const book_pages = book[5];
+            const book_date = book[6];
 
             // Create the html for the book
             const $newBookTemplate = $tackTemplate.clone()
             $newBookTemplate.find('.content').html(book_content)
+            $newBookTemplate.find('.author').html(book_author)
+            $newBookTemplate.find('.publishing').html(book_publishing)
+            $newBookTemplate.find('.pages').html(book_pages)
+            $newBookTemplate.find('.date').html(book_date)
             $newBookTemplate.find('input')
                             .prop('name', book_id)
                             .prop('checked', book_completed)

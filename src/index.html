@@ -39,11 +39,28 @@
         color: grey;
         text-decoration: line-through;
       }
+      #completedBookList .author {
+        color: grey;
+        text-decoration: line-through;
+      }
+      #completedBookList .publishing {
+        color: grey;
+        text-decoration: line-through;
+      }
+      #completedBookList .pages {
+        color: grey;
+        text-decoration: line-through;
+      }
+      #completedBookList .date {
+        color: grey;
+        text-decoration: line-through;
+      }
+      
     </style>
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://partilivro.azurewebsites.net" target="_blank">PartiLivroCripto</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0"  target="_blank">PartiLivroCripto</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
           <small><a class="nav-link" href="#"><span id="account"></span></a></small>
@@ -72,13 +89,17 @@
               <input type="submit" value="Cadastrar">
             </form>
             <br>
-            
+
             <label for="LLista">Lista de Títulos:</label>
             <ul id="bookList" class="list-unstyled">
               <div class="bookTemplate" class="checkbox" style="display: none">
                 <label>
                   <input type="checkbox" />
                   <span class="content">Books goes here...</span>
+                  <span class="author">Books goes here...</span>
+                  <span class="publishing">Books goes here...</span>
+                  <span class="pages">Books goes here...</span>
+                  <span class="date">Books goes here...</span>
                 </label>
               </div>
             </ul>
