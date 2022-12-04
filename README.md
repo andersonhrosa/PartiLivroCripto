@@ -1,5 +1,5 @@
 # PartiLivro
-![Logo PartiLivro](/static/images/logoNew.jpeg)
+![Logo PartiLivro](/src/img/logoNew.jpeg)
 
 ## Tabela de Conteúdos
 
@@ -48,7 +48,7 @@ Sistema deve possibilitar o compartilhamento de livros entre os usuários atrav�
 -->
 
 ### Diagrama de Classes UML <a name = "diagrama"></a>
-![Diagrama de Classes PartiLivro](/assets/img/ClasseUML.png)
+![Diagrama de Classes PartiLivro](/src/img/ClasseUML.png)
 <!---### Diagrama UML <a name = "diagrama"></a>
 ![Diagrama de Classes PartiLivro](/assets/img/PartiLivro.png)
 <!---
