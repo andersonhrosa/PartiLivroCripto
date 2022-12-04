@@ -129,7 +129,11 @@ App = {
     createBook: async () => {
         App.setLoading(true);
         const content = $('#newBook').val();
-        await App.partiLivro.createBook(content, { from: App.account });
+        const author = $('#IAuthor').val();
+        const publishing = $('#IPublishing').val();
+        const pages = $('#IPages').val();
+        const date = $('#IDate').val();
+        await App.partiLivro.createBook(content, author, publishing, pages, date, { from: App.account });
         window.location.reload();
     },
 
