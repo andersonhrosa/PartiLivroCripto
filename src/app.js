@@ -70,43 +70,43 @@ App = {
         // Render Account
         $('#account').html(App.account)
 
-        // Render Tasks
-        await App.renderTasks()
+        // Render Books
+        await App.renderBooks()
 
         // Update loading state
         App.setLoading(false)
         },
 
 
-    renderTasks: async () => {
-        // load all the tasks from the blockchain
-        const taskCount = await App.partiLivro.taskCount();
-        const $tackTemplate = $(".taskTemplate");
+    renderBooks: async () => {
+        // load all the books from the blockchain
+        const bookCount = await App.partiLivro.bookCount();
+        const $tackTemplate = $(".bookTemplate");
 
-        // render each of the tasks
-        for (var i = 1; i <= taskCount; i++){
-            const task = await App.partiLivro.tasks(i);
-            const task_id = task[0].toNumber();
-            const task_content = task[1];
-            const task_completed = task[2];
+        // render each of the books
+        for (var i = 1; i <= bookCount; i++){
+            const book = await App.partiLivro.books(i);
+            const book_id = book[0].toNumber();
+            const book_content = book[1];
+            const book_completed = book[2];
 
-            // Create the html for the task
-            const $newTaskTemplate = $tackTemplate.clone()
-            $newTaskTemplate.find('.content').html(task_content)
-            $newTaskTemplate.find('input')
-                            .prop('name', task_id)
-                            .prop('checked', task_completed)
+            // Create the html for the book
+            const $newBookTemplate = $tackTemplate.clone()
+            $newBookTemplate.find('.content').html(book_content)
+            $newBookTemplate.find('input')
+                            .prop('name', book_id)
+                            .prop('checked', book_completed)
                             .on('click', App.toggleCompleted)
     
-            // Put the task in the correct list
-            if (task_completed) {
-                $('#completedTaskList').append($newTaskTemplate)
+            // Put the book in the correct list
+            if (book_completed) {
+                $('#completedBookList').append($newBookTemplate)
             } else {
-                $('#taskList').append($newTaskTemplate)
+                $('#bookList').append($newBookTemplate)
             }
     
-            // Show the task
-            $newTaskTemplate.show()
+            // Show the book
+            $newBookTemplate.show()
         }
 
     },
@@ -126,18 +126,18 @@ App = {
     },
 
 
-    createTask: async () => {
+    createBook: async () => {
         App.setLoading(true);
-        const content = $('#newTask').val();
-        await App.partiLivro.createTask(content, { from: App.account });
+        const content = $('#newBook').val();
+        await App.partiLivro.createBook(content, { from: App.account });
         window.location.reload();
     },
 
 
     toggleCompleted: async (e) => {
         App.setLoading(true)
-        const taskId = e.target.name
-        await App.partiLivro.toggleCompleted(taskId, { from: App.account });
+        const bookId = e.target.name
+        await App.partiLivro.toggleCompleted(bookId, { from: App.account });
         window.location.reload()
     },   
 }

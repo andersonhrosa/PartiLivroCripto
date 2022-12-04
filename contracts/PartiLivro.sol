@@ -2,42 +2,42 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract PartiLivro {
-    uint public taskCount = 0;
+    uint public bookCount = 0;
 
-    struct Task {
+    struct Book {
         uint id;
         string content;
         bool completed;
     }
 
-    mapping(uint => Task) public tasks;
+    mapping(uint => Book) public books;
 
-    event TaskCreated(
+    event BookCreated(
         uint id,
         string content,
         bool completed
     );
 
-    event TaskCompleted(
+    event BookCompleted(
         uint id,
         bool completed
     );
 
     constructor() public {
-        createTask("Check out partilivro.azurewebsites.net");
+        createBook("Check out partilivro.azurewebsites.net");
     }
 
-    function createTask(string memory _content) public {
-        taskCount ++;
-        tasks[taskCount] = Task(taskCount, _content, false);
-        emit TaskCreated(taskCount, _content, false);
+    function createBook(string memory _content) public {
+        bookCount ++;
+        books[bookCount] = Book(bookCount, _content, false);
+        emit BookCreated(bookCount, _content, false);
     }
 
     function toggleCompleted(uint _id) public {
-    Task memory _task = tasks[_id];
-    _task.completed = !_task.completed;
-    tasks[_id] = _task;
-    emit TaskCompleted(_id, _task.completed);
+    Book memory _book = books[_id];
+    _book.completed = !_book.completed;
+    books[_id] = _book;
+    emit BookCompleted(_id, _book.completed);
   }
 }
 
