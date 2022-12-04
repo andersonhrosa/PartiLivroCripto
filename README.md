@@ -1,4 +1,4 @@
-# eth-todo-list
+# Parti-Livro-Cripto
 
 ## 1. List tasks in the smart contract
 ## 2. List tasks in the console

@@ -50,13 +50,13 @@ App = {
 
     loadContract: async () => {
         // create a JS version of the contracts
-        const todoList = await $.getJSON('TodoList.json')
-        App.contracts.TodoList = TruffleContract(todoList)
-        App.contracts.TodoList.setProvider(new Web3.providers.HttpProvider("http://172.24.160.1:7545"));
-        // console.log(todoList);
+        const partiLivro = await $.getJSON('PartiLivro.json')
+        App.contracts.PartiLivro = TruffleContract(partiLivro)
+        App.contracts.PartiLivro.setProvider(new Web3.providers.HttpProvider("http://172.24.160.1:7545"));
+        // console.log(partiLivro);
 
         // Hydrate the smart contract with values from the blockchain
-        App.todoList = await App.contracts.TodoList.deployed()
+        App.partiLivro = await App.contracts.PartiLivro.deployed()
     },
 
     render: async () => {
@@ -80,12 +80,12 @@ App = {
 
     renderTasks: async () => {
         // load all the tasks from the blockchain
-        const taskCount = await App.todoList.taskCount();
+        const taskCount = await App.partiLivro.taskCount();
         const $tackTemplate = $(".taskTemplate");
 
         // render each of the tasks
         for (var i = 1; i <= taskCount; i++){
-            const task = await App.todoList.tasks(i);
+            const task = await App.partiLivro.tasks(i);
             const task_id = task[0].toNumber();
             const task_content = task[1];
             const task_completed = task[2];
@@ -129,7 +129,7 @@ App = {
     createTask: async () => {
         App.setLoading(true);
         const content = $('#newTask').val();
-        await App.todoList.createTask(content, { from: App.account });
+        await App.partiLivro.createTask(content, { from: App.account });
         window.location.reload();
     },
 
@@ -137,7 +137,7 @@ App = {
     toggleCompleted: async (e) => {
         App.setLoading(true)
         const taskId = e.target.name
-        await App.todoList.toggleCompleted(taskId, { from: App.account });
+        await App.partiLivro.toggleCompleted(taskId, { from: App.account });
         window.location.reload()
     },   
 }
