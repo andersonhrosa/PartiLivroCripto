@@ -8,6 +8,10 @@ contract PartiLivro {
         uint id;
         string content;
         bool completed;
+        string author;
+        string publishing;
+        string pages;
+        string date;
     }
 
     mapping(uint => Book) public books;
@@ -15,7 +19,11 @@ contract PartiLivro {
     event BookCreated(
         uint id,
         string content,
-        bool completed
+        bool completed,
+        string author,
+        string publishing,
+        string pages,
+        string date
     );
 
     event BookCompleted(
@@ -24,13 +32,13 @@ contract PartiLivro {
     );
 
     constructor() public {
-        createBook("Livro 1");
+        createBook("1986", "Jorge Orwell", "Editora Alpha", "416", "01/07/2009" );
     }
 
-    function createBook(string memory _content) public {
+    function createBook(string memory _content, string memory _author, string memory _publishing, string memory _pages, string memory _date) public {
         bookCount ++;
-        books[bookCount] = Book(bookCount, _content, false);
-        emit BookCreated(bookCount, _content, false);
+        books[bookCount] = Book(bookCount, _content, false, _author, _publishing, _pages, _date);
+        emit BookCreated(bookCount, _content, false, _author, _publishing, _pages, _date);
     }
 
     function toggleCompleted(uint _id) public {
