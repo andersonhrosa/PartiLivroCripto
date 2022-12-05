@@ -32,7 +32,7 @@ contract PartiLivro {
     );
 
     constructor() public {
-        createBook("1986", "Jorge Orwell", "Editora Alpha", "416", "01/07/2009" );
+        createBook("1984", "Jorge Orwell", "Editora Alpha", "416", "01/07/2009" );
     }
 
     function createBook(string memory _content, string memory _author, string memory _publishing, string memory _pages, string memory _date) public {
